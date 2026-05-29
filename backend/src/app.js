@@ -15,6 +15,9 @@ connectDB();
 const teamRoutes = require('./routes/teamRoutes');
 const playerRoutes = require('./routes/playerRoutes');
 const authRoutes = require('./routes/authRoutes');
+const matchRoutes = require('./routes/matchRoutes');
+const performanceRoutes = require('./routes/performanceRoutes');
+const fitnessRoutes = require('./routes/fitnessRoutes');
 
 const app = express();
 
@@ -33,15 +36,11 @@ app.get('/health', (req, res) => {
 app.use('/api/teams', teamRoutes);
 app.use('/api/players', playerRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/matches', matchRoutes);
+app.use('/api/performance', performanceRoutes);
+app.use('/api/fitness', fitnessRoutes);
 
 // --- API Route Stubs ---
-
-// Match & Performance Routes
-app.post('/api/matches', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/matches', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/matches/:id', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.post('/api/performance', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.post('/api/fitness', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
 
 // AI Routes
 app.post('/api/ai/match-strategy', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
