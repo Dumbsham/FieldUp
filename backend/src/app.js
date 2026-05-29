@@ -11,6 +11,11 @@ dotenv.config();
 // Connect to Database
 connectDB();
 
+// Route files
+const teamRoutes = require('./routes/teamRoutes');
+const playerRoutes = require('./routes/playerRoutes');
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 
 // Middleware
@@ -24,21 +29,12 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'FieldUp Backend is running' });
 });
 
+// Mount routers
+app.use('/api/teams', teamRoutes);
+app.use('/api/players', playerRoutes);
+app.use('/api/auth', authRoutes);
+
 // --- API Route Stubs ---
-
-// Auth Routes
-app.post('/api/auth/register', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.post('/api/auth/login', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/auth/me', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-
-// Team Routes
-app.post('/api/teams', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/teams/:id', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/teams/:teamId/players', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-
-// Player Routes
-app.post('/api/players', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
-app.get('/api/players/:id', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
 
 // Match & Performance Routes
 app.post('/api/matches', (req, res) => res.status(501).json({ message: 'Not Implemented' }));
